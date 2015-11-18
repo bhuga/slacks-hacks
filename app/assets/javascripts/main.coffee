@@ -10,7 +10,7 @@ foobarize = (selector) ->
   selector.addClass('foobar')
 
 fooBarAdder = (arg1, msg) ->
-  foobarize($('data-ts="' + msg.ts + '"]'))
+  foobarize($('[data-ts="' + msg.ts + '"]'))
 
 TS.groups.message_received_sig.add(fooBarAdder)
 TS.channels.message_received_sig.add(fooBarAdder)
@@ -27,7 +27,7 @@ botify = (selector) ->
       $(el).addClass 'bot'
 
 botAdder = (arg1, msg) ->
-  botify($('data-ts="' + msg.ts + '"]'))
+  botify($('[data-ts="' + msg.ts + '"]'))
 
 botifyMessages = =>
   botify($('.message'))
