@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+.foobar {
+  background-color: #A9F5F2 ;
+}
+.bot .message_content {
+  font-family: Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+}
