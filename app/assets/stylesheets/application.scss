@@ -1,0 +1,51 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+.message_content {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+/* 'bot_message' is attached to things from incoming webhooks -- usually notifications.
+   'bot' is added to that as well and is hubot replies. */
+
+.bot {
+  background-color: #FAFAFA;
+  outline-color: #F2F2F2;
+  outline-width: 1px;
+  outline-style: solid;
+
+  .inline_attachment_wrapper {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .message_content {
+    font-family: Menlo, Consolas, monospace;
+  }
+}
+.bot_message .message_content {
+  color: #bebebe;
+}
+
+ts-message {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.msg_inline_img_holder .msg_inline_img_container {
+  max-width: inherit;
+}

@@ -1,25 +1,5 @@
-css = document.createElement 'link'
-css.setAttribute 'href', 'https://github.dev/assets/application.css'
-css.setAttribute 'type', 'text/css'
-css.setAttribute 'rel', 'stylesheet'
-document.head.appendChild css
 
 console.log "Hello from slacks hacks!"
-
-foobarize = (selector) ->
-  selector.addClass('foobar')
-
-fooBarAdder = (arg1, msg) ->
-  foobarize($('[data-ts="' + msg.ts + '"]'))
-
-TS.groups.message_received_sig.add(fooBarAdder)
-TS.channels.message_received_sig.add(fooBarAdder)
-
-foobarizeMessages = =>
-  foobarize($('.message'))
-
-TS.channels.switched_sig.add foobarizeMessages
-TS.groups.switched_sig.add foobarizeMessages
 
 botify = (selector) ->
   selector.each (_, el) ->
@@ -27,6 +7,8 @@ botify = (selector) ->
       $(el).addClass 'bot'
 
 botAdder = (arg1, msg) ->
+  console.log "botifying}"
+  console.log msg
   botify($('[data-ts="' + msg.ts + '"]'))
 
 botifyMessages = =>
