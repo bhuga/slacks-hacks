@@ -21,6 +21,10 @@ whitelist = [
   "groups.switched_sig"
   "groups.history_fetched_sig"
 ]
+
+# Botify the currently-viewed channel
+botifyMessages()
+
 #replaceDispatch(eventManager)
 if false
   for key in Object.keys(TS)
