@@ -7,8 +7,6 @@ botify = (selector) ->
       $(el).addClass 'bot'
 
 botAdder = (arg1, msg) ->
-  console.log "botifying}"
-  console.log msg
   botify($('[data-ts="' + msg.ts + '"]'))
 
 botifyMessages = =>
