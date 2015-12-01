@@ -51,3 +51,7 @@ ts-message {
 .msg_inline_img_holder .msg_inline_img_container {
   max-width: inherit;
 }
+
+.msg_inline_file_preview_toggler, .inline_img_bytes, .msg_inline_img_collapser {
+  display: none;
+}
