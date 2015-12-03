@@ -24,16 +24,3 @@ whitelist = [
 
 # Botify the currently-viewed channel
 botifyMessages()
-
-#replaceDispatch(eventManager)
-if false
-  for key in Object.keys(TS)
-    for subkey in Object.keys(TS[key])
-      if subkey.match(/_sig$/)
-        ( ->
-          console.log "breaking dispatch on #{key}.#{subkey}"
-          foo = key
-          bar = subkey
-          unless "#{key}.#{subkey}" in whitelist
-            TS[foo][bar].dispatch = =>
-              console.log "calling #{foo}.#{bar}")()
