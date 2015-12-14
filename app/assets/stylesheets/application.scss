@@ -93,10 +93,6 @@ ts-message .message_gutter a {
   font-size: 11px;
   text-align: center;
 }
-/* Override hover background (distracting) */
-.message:hover {
-  background: none !important;
-}
 
 /* Move star button becasue of the padding changes */
 .message_star_holder {
