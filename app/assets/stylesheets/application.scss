@@ -59,3 +59,90 @@ ts-message {
 .color_bot_Hubot, .color_bot_hubot {
   display: none !important;
 }
+
+/* Allow long bot message to scroll */
+.bot_label ~ .message_body .dynamic_content_max_width {
+  font-family: menlo;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: auto;
+  max-width: 100%;
+  display: block;
+}
+
+/* Move text expander on its own line */
+.bot_label ~ .message_body .dynamic_content_max_width .rest_text_expander {
+  display: block;
+}
+
+/* Unify timestamp style */
+.timestamp {
+  float: right;
+  font-family: menlo;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+/* Smaller avatar becasue of the padding changes */
+ts-message .member_image {
+  transform: scale(0.8);
+}
+
+ts-message .message_gutter,
+ts-message .message_gutter a {
+  font-family: menlo;
+  font-size: 11px;
+  text-align: center;
+}
+/* Override hover background (distracting) */
+.message:hover {
+  background: none !important;
+}
+
+/* Move star button becasue of the padding changes */
+.message_star_holder {
+  left: 8px;
+  position: absolute;
+  top: -1px;
+}
+
+/* Smaller emojis to go with smaller text */
+.emoji-outer {
+  transform: scale(0.8);
+}
+
+/* Don't separate bot messages */
+.bot_message + .bot_message {
+  border-top: 0;
+}
+
+#messages_container .message_gutter {
+  padding-left: 20px;
+}
+
+/* Highlight messages sent by current user */
+.sent_by_me {
+  .message_content:before {
+    background: #fff9f0;
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee;
+    content: '';
+    display: block;
+    height: 100%;
+    margin-left: -80px;
+    margin-top: -3px;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+
+  ts-message:not(.first) .message_sender{
+    display: block;
+    font-size: 0;
+    margin-bottom: -15px;
+  }
+
+  ts-message:not(.first) .message_sender:before {
+    border-top: 0;
+  }
+}
