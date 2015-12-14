@@ -25,6 +25,7 @@
 .bot {
   background-color: #FAFAFA;
   border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
 
   .inline_attachment_wrapper {
     padding-top: 0px;
@@ -122,8 +123,6 @@ ts-message .message_gutter a {
 .sent_by_me {
   .message_content:before {
     background: #fff9f0;
-    border-bottom: 1px solid #eee;
-    border-top: 1px solid #eee;
     content: '';
     display: block;
     height: 100%;
