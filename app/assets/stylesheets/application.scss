@@ -127,7 +127,7 @@ ts-message.active:not(.standalone):not(.multi_delete_mode):not(.highlight):not(.
 ts-message.sent_by_me {
   background: #fff9f0;
   &:hover {
-    background: #fff9f0;
+    background: #fff9f0 !important; /* slack's hover selector is incredibly specific */
   }
 }
 
