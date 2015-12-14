@@ -115,6 +115,11 @@ ts-message .message_gutter a {
   padding-left: 20px;
 }
 
+/* disable distracting message hover */
+ts-message.active:not(.standalone):not(.multi_delete_mode):not(.highlight), ts-message:hover:not(.standalone):not(.multi_delete_mode):not(.highlight) {
+  background: inherit;
+}
+
 /* Highlight messages sent by current user */
 ts-message.sent_by_me {
   background: #fff9f0
