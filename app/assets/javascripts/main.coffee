@@ -12,15 +12,26 @@ botAdder = (arg1, msg) ->
 botifyMessages = =>
   botify($('.message'))
 
+# Botify the currently-viewed channel
+botifyMessages()
+
+# Attach .sent_by_me to messages sent by the current user
+meAdder = (selector) ->
+  selector.each (_, el) ->
+    $(el).addClass 'sent_by_me'
+
+sentByMeMessages = (selector) ->
+  selector = '.message_sender[data-member-id=' + TS.boot_data.user_id + ']'
+  messages = $(selector).closest('ts-message')
+  messages.each (_, el) ->
+    $(el).addClass 'sent_by_me'
+
 TS.groups.message_received_sig.add(botAdder)
 TS.channels.message_received_sig.add(botAdder)
 TS.channels.switched_sig.add botifyMessages
 TS.groups.switched_sig.add botifyMessages
 
-whitelist = [
-  "groups.switched_sig"
-  "groups.history_fetched_sig"
-]
-
-# Botify the currently-viewed channel
-botifyMessages()
+TS.channels.switched_sig.add sentByMeMessages
+TS.groups.switched_sig.add sentByMeMessages
+TS.groups.message_received_sig.add(sentByMeMessages)
+TS.channels.message_received_sig.add(sentByMeMessages)
