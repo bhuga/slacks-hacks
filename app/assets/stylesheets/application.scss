@@ -24,9 +24,8 @@
 
 .bot {
   background-color: #FAFAFA;
-  outline-color: #F2F2F2;
-  outline-width: 1px;
-  outline-style: solid;
+  border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee;
 
   .inline_attachment_wrapper {
     padding-top: 0px;
