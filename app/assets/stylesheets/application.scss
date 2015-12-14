@@ -133,6 +133,10 @@ ts-message .message_gutter a {
     z-index: -1;
   }
 
+  .message_content {
+    padding-bottom: 0;
+  }
+
   ts-message:not(.first) .message_sender{
     display: block;
     font-size: 0;
