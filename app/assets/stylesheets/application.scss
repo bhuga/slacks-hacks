@@ -130,13 +130,3 @@ ts-message.sent_by_me {
     background: #fff9f0 !important; /* slack's hover selector is incredibly specific */
   }
 }
-
-ts-message.sent_by_me:not(.first) .message_sender{
-  display: block;
-  font-size: 0;
-  margin-bottom: -15px;
-}
-
-ts-message.sent_by_me:not(.first) .message_sender:before {
-  border-top: 0;
-}
