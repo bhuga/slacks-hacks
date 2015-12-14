@@ -125,7 +125,7 @@ ts-message .message_gutter a {
     background: #fff9f0;
     content: '';
     display: block;
-    height: 100%;
+    height: 110%;
     margin-left: -80px;
     margin-top: -3px;
     position: absolute;
@@ -135,15 +135,16 @@ ts-message .message_gutter a {
 
   .message_content {
     padding-bottom: 0;
+    margin-top: -1px;
   }
+}
 
-  ts-message:not(.first) .message_sender{
-    display: block;
-    font-size: 0;
-    margin-bottom: -15px;
-  }
+ts-message.sent_by_me:not(.first) .message_sender{
+  display: block;
+  font-size: 0;
+  margin-bottom: -15px;
+}
 
-  ts-message:not(.first) .message_sender:before {
-    border-top: 0;
-  }
+ts-message.sent_by_me:not(.first) .message_sender:before {
+  border-top: 0;
 }
