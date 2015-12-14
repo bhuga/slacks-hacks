@@ -107,7 +107,7 @@ ts-message .message_gutter a {
 }
 
 /* Don't separate bot messages */
-.bot_message + .bot_message {
+.bot_message + .bot_message, .bot + .bot_message, .bot_message + .bot, .bot + .bot {
   border-top: 0;
 }
 
