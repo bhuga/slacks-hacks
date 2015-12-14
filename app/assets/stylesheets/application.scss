@@ -24,6 +24,9 @@
 
 .bot {
   background-color: #FAFAFA;
+  &:hover {
+    background-color: #FAFAFA;
+  }
   border-bottom: 1px solid #eee;
   border-top: 1px solid #eee;
 
@@ -116,13 +119,16 @@ ts-message .message_gutter a {
 }
 
 /* disable distracting message hover */
-ts-message.active:not(.standalone):not(.multi_delete_mode):not(.highlight), ts-message:hover:not(.standalone):not(.multi_delete_mode):not(.highlight) {
+ts-message.active:not(.standalone):not(.multi_delete_mode):not(.highlight):not(.sent_by_me):not(.bot), ts-message:hover:not(.standalone):not(.multi_delete_mode):not(.highlight):not(.sent_by_me):not(.bot) {
   background: inherit;
 }
 
 /* Highlight messages sent by current user */
 ts-message.sent_by_me {
-  background: #fff9f0
+  background: #fff9f0;
+  &:hover {
+    background: #fff9f0;
+  }
 }
 
 ts-message.sent_by_me:not(.first) .message_sender{
