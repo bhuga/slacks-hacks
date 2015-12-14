@@ -116,23 +116,8 @@ ts-message .message_gutter a {
 }
 
 /* Highlight messages sent by current user */
-.sent_by_me {
-  .message_content:before {
-    background: #fff9f0;
-    content: '';
-    display: block;
-    height: 110%;
-    margin-left: -80px;
-    margin-top: -3px;
-    position: absolute;
-    width: 100%;
-    z-index: -1;
-  }
-
-  .message_content {
-    padding-bottom: 0;
-    margin-top: -1px;
-  }
+ts-message.sent_by_me {
+  background: #fff9f0
 }
 
 ts-message.sent_by_me:not(.first) .message_sender{
