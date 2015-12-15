@@ -15,11 +15,11 @@
  */
 #message_edit_form #message-input,
 #messages-input-container #message-input,
-.inline_message_input_container #message-input,
-.message_content {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+.inline_message_input_container #message-input {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .message_content {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 22px;
   font-size: 14px;
 }
