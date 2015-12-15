@@ -68,7 +68,7 @@ ts-message {
 }
 
 /* Allow long bot message to scroll */
-.bot_label ~ .message_body .dynamic_content_max_width {
+.bot_label ~ .message_body .content.multiline_attachment {
   font-family: menlo;
   font-size: 12px;
   white-space: nowrap;
