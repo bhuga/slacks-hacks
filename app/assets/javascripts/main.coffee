@@ -26,14 +26,11 @@ sentByMeMessages = ->
   messages.each (_, el) ->
     $(el).addClass 'sent_by_me'
 
-multiline = (selection) ->
-  selection.html().match(/<br>/)?
-
 addMultilineToMessages = ->
   $('.attachment_contents').each (_, el) ->
     selection = $(el)
     if selection.html().match(/<br>/)
-      selection.closest('content').addClass 'multiline_attachment'
+      selection.closest('.content').first().addClass('multiline_attachment')
 
 redraw = ->
   botifyMessages()
