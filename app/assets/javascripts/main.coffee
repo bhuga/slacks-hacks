@@ -37,6 +37,8 @@ redraw = ->
   sentByMeMessages()
   addMultilineToMessages()
 
+redraw()
+
 TS.groups.message_received_sig.add redraw
 TS.channels.message_received_sig.add redraw
 TS.channels.switched_sig.add redraw
