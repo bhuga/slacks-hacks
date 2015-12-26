@@ -33,7 +33,7 @@ setInterval ->
 
     for msg in channel.msgs when parseFloat(msg.ts) > last_read
       text = msg.text || msg.attachments[0].text
-      if text.indexOf(name) != -1
+      if text?.indexOf(name) != -1
         console.log "found unread mention in #{channel.name}"
         count += 1
     if count > 0
