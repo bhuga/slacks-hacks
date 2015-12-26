@@ -21,6 +21,10 @@ TS.channels.switched_sig.add ->
 setInterval ->
   name = "@#{TS.model.user.name}"
   total = 0
+  # Mark the current channel as viewed to mark notifications sent since we
+  # switched. Otherwise notifications for a currently-viewed muted room can
+  # stack up.
+  channelsViewedAt[TS.model.active_channel_id] = (Date.now() / 1000.0)
   for channel in TS.model.channels when channel.is_member
     count = 0
 
