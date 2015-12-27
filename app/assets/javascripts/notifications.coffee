@@ -18,6 +18,12 @@ for channel in TS.model.channels when channel.is_member
 TS.channels.switched_sig.add ->
   channelsViewedAt[TS.model.active_channel_id] = (Date.now() / 1000.0)
 
+dmNotificationsCount = ->
+  count = 0
+  $("#im-list .unread_highlight").each (_, el) ->
+    count += parseInt(el.innerText)
+  count
+
 setInterval ->
   name = "@#{TS.model.user.name}"
   total = 0
@@ -45,6 +51,8 @@ setInterval ->
     else
       $(".unread_highlight_#{channel.id}").addClass('hidden').text("")
     total += count
+
+  total += dmNotificationsCount()
   if total > 0
     dock.bounce()
     dock.badge(total.toString())
