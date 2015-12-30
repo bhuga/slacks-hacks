@@ -4,6 +4,8 @@
 window.dock = {}
 
 window.dock.bounce = ->
+  preference = TS.model.prefs.mac_ssb_bounce
+  return unless preference is "long" or preference is "short"
   type = if TS.model.prefs.mac_ssb_bounce == "short" then "informational" else "critical"
   host.ipc.send('bounce', { type: type })
 
