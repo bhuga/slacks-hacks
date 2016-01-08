@@ -37,9 +37,11 @@ redraw = ->
   sentByMeMessages()
   addMultilineToMessages()
 
-TS.groups.message_received_sig.add redraw
-TS.channels.message_received_sig.add redraw
-TS.channels.switched_sig.add redraw
-TS.groups.switched_sig.add redraw
+slackReadyFunction = (func) ->
+  TS.groups.message_received_sig.add func
+  TS.channels.message_received_sig.add func
+  TS.channels.switched_sig.add func
+  TS.groups.switched_sig.add func
+  func()
 
-redraw()
+slackReadyFunction(redraw)
