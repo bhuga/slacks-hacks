@@ -140,6 +140,16 @@ ts-message.sent_by_me {
 
 .inserted_button {
   border-radius: 5px;
-  background-color: #ddd;
+  background: #fbfbfa;
   line-height: 16px;
+  font-size: 14px;
+  font-family: Slack-Lato,appleLogo,sans-serif;
+  font-weight: 700;
+  text-shadow: none;
+  color: #555459;
+  border: thin solid #ddd;
+  &:hover {
+    background: #fff;
+    color: #3aa3e3;
+  }
 }
