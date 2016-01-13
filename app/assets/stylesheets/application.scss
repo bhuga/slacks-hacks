@@ -137,3 +137,9 @@ ts-message.sent_by_me {
     background: #fff9f0 !important; /* slack's hover selector is incredibly specific */
   }
 }
+
+.inserted_button {
+  border-radius: 5px;
+  background-color: #ddd;
+  line-height: 16px;
+}
