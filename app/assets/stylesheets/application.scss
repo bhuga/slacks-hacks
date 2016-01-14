@@ -153,3 +153,8 @@ ts-message.sent_by_me {
     color: #3aa3e3;
   }
 }
+
+pre.special_formatting {
+  white-space: nowrap;
+  overflow: auto;
+}
