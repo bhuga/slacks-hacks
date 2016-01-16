@@ -1,16 +1,17 @@
-# TS.client.ui.active_highlight_count
-# TS.model.prefs.mac_ssb_bounce, "short" or "long"
-# Optimistically, these might be useful from other scripts, so we'll export them?
-window.dock = {}
+# The bounce functions have been added to the main application so we can
+# not expose any native functions. see expose-window-apis.js in hackable-slack-client.
+# these will be removed "soon"
+unless window.dock?
+  window.dock = {}
 
-window.dock.bounce = ->
-  preference = TS.model.prefs.mac_ssb_bounce
-  return unless preference is "long" or preference is "short"
-  type = if TS.model.prefs.mac_ssb_bounce == "short" then "informational" else "critical"
-  host.ipc.send('bounce', { type: type })
+  window.dock.bounce = ->
+    preference = TS.model.prefs.mac_ssb_bounce
+    return unless preference is "long" or preference is "short"
+    type = if TS.model.prefs.mac_ssb_bounce == "short" then "informational" else "critical"
+    host.ipc.send('bounce', { type: type })
 
-window.dock.badge = (message) ->
-  host.ipc.send('badge', { badge_text: message })
+  window.dock.badge = (message) ->
+    host.ipc.send('badge', { badge_text: message })
 
 # At boot, mark all channels as read once.
 window.channelsViewedAt = {}
