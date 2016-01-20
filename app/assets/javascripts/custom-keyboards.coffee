@@ -11,8 +11,8 @@ window.repaintKeyboards = ->
 
   buttons.each (_, el) ->
     fields = el.href.split("/", 5)
-    label = decodeURI(fields[3])
-    command = decodeURI(fields[4])
+    label = decodeURIComponent(fields[3])
+    command = decodeURIComponent(fields[4])
     button = $("<button class='inserted_button'>#{label}</button>")
     button.click ->
       fillMessageBar(command)
