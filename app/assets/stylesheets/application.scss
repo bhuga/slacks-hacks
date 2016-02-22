@@ -162,3 +162,19 @@ pre.special_formatting {
 .message_body i .emoji-sizer {
   transform: skew(-14deg);
 }
+
+.message_body b .emoji-sizer {
+  animation-duration: 1.6s;
+  animation-name: pulse;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+     transform: scale(1);
+   }
+   50% {
+     transform: scale(1.5);
+   }
+}
