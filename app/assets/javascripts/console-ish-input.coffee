@@ -45,3 +45,15 @@ input.bind "keydown", (e) ->
   currentValue = input.val()
   TS.utility.populateInput(input, currentValue.slice(currentIndex))
   input.setCursorPosition(0)
+
+# here be dragons: !$
+old_submit = TS.view.submit
+TS.view.submit = (event) ->
+  current = input.val()
+  if current.endsWith("!$")
+    history = TS.chat_history.initializeChannelHistory(TS.model.active_cid)
+    last_message = history.entries[0]
+    last_word = last_message.slice(last_message.lastIndexOf(" ") + 1)
+    replaced = current.replace(/!\$$/, last_word)
+    input.val(replaced)
+  old_submit(event)
