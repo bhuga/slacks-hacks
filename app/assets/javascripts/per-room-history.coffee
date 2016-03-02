@@ -30,7 +30,7 @@ TS.chat_history.add = (txt) ->
   index = entries.indexOf(txt)
   if index != -1
     entries.splice(index, 1)
-  entries.unshift(txt)
+  entries.unshift(txt.trim())
   entries.splice(30)
   localStorage.setItem("per_room_history", JSON.stringify(TS.model.per_room_input_history))
 
