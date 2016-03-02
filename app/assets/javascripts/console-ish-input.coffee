@@ -54,6 +54,7 @@ TS.view.submit = (event) ->
     history = TS.chat_history.initializeChannelHistory(TS.model.active_cid)
     last_message = history.entries[0]
     last_word = last_message.slice(last_message.trim().lastIndexOf(" ") + 1)
-    replaced = current.replace(/!\$/g, last_word)
+    # Prevents expanding `!$`. Should prevent expanding in backticks entirely, maybe?
+    replaced = current.replace(/(^|[^`])!\$/g, "$1" + last_word)
     input.val(replaced)
   old_submit(event)
