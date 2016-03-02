@@ -5,7 +5,7 @@ input = TS.client.ui.$msg_input
 input.bind "keydown", (e) ->
   return if input.val().indexOf("\n") != -1
 
-  if (e.which == TS.utility.keymap.up && input.getCursorPosition() >= 1)
+  if (e.which == TS.utility.keymap.up && input.getCursorPosition() >= 1 && !e.movedHistory)
     TS.chat_history.onArrowKey(e, input)
     input.setCursorPosition(input.val().length)
     e.preventDefault()
