@@ -65,7 +65,4 @@ TS.chat_history.onArrowKey = (e, input) ->
   hist_text ||= history.entries[history.index]
   e.preventDefault()
   TS.utility.populateInput(TS.client.ui.$msg_input, hist_text)
-  if e.which == TS.utility.keymap.up
-    input.setCursorPosition 0
-  else
-    input.setCursorPosition(input.val().length)
+  input.setCursorPosition(input.val().length)
