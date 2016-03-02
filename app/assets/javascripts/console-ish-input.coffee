@@ -27,3 +27,21 @@ input.bind "keydown", (e) ->
   valueWithWordRemoved = currentValue.slice(0, previousWhitespaceIndex) + currentValue.slice(currentIndex)
   input.val(valueWithWordRemoved)
   input.setCursorPosition(previousWhitespaceIndex)
+
+input.bind "keydown", (e) ->
+  # ctrl-k
+  return unless e.ctrlKey == true and e.keyCode == 75
+
+  currentIndex = input.getCursorPosition()
+  currentValue = input.val()
+  input.val(currentValue.slice(0, currentIndex))
+  input.setCursorPosition(currentIndex)
+
+input.bind "keydown", (e) ->
+  # ctrl-u
+  return unless e.ctrlKey == true and e.keyCode == 85
+
+  currentIndex = input.getCursorPosition()
+  currentValue = input.val()
+  input.val(currentValue.slice(currentIndex))
+  input.setCursorPosition(0)
