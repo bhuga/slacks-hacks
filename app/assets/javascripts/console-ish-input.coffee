@@ -50,10 +50,10 @@ input.bind "keydown", (e) ->
 old_submit = TS.view.submit
 TS.view.submit = (event) ->
   current = input.val()
-  if current.endsWith("!$")
+  if current.indexOf("!$") != -1
     history = TS.chat_history.initializeChannelHistory(TS.model.active_cid)
     last_message = history.entries[0]
-    last_word = last_message.slice(last_message.lastIndexOf(" ") + 1)
-    replaced = current.replace(/!\$$/, last_word)
+    last_word = last_message.slice(last_message.trim().lastIndexOf(" ") + 1)
+    replaced = current.replace(/!\$/g, last_word)
     input.val(replaced)
   old_submit(event)
