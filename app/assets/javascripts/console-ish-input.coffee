@@ -25,7 +25,7 @@ input.bind "keydown", (e) ->
   previousWhitespaceIndex = beforeCurrent.lastIndexOf(" ")
   previousWhitespaceIndex = 0 if previousWhitespaceIndex == -1
   valueWithWordRemoved = currentValue.slice(0, previousWhitespaceIndex) + currentValue.slice(currentIndex)
-  input.val(valueWithWordRemoved)
+  TS.utility.populateInput(input, valueWithWordRemoved)
   input.setCursorPosition(previousWhitespaceIndex)
 
 input.bind "keydown", (e) ->
@@ -34,7 +34,7 @@ input.bind "keydown", (e) ->
 
   currentIndex = input.getCursorPosition()
   currentValue = input.val()
-  input.val(currentValue.slice(0, currentIndex))
+  TS.utility.populateInput(input, currentValue.slice(0, currentIndex))
   input.setCursorPosition(currentIndex)
 
 input.bind "keydown", (e) ->
@@ -43,5 +43,5 @@ input.bind "keydown", (e) ->
 
   currentIndex = input.getCursorPosition()
   currentValue = input.val()
-  input.val(currentValue.slice(currentIndex))
+  TS.utility.populateInput(input, currentValue.slice(currentIndex))
   input.setCursorPosition(0)
