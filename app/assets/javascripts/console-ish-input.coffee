@@ -13,3 +13,17 @@ input.bind "keydown", (e) ->
     TS.chat_history.onArrowKey(e, input)
     input.setCursorPosition(input.val().length)
     e.preventDefault()
+
+input.bind "keydown", (e) ->
+  # ctrl-w
+  return unless e.ctrlKey == true and e.keyCode == 87
+
+  currentIndex = input.getCursorPosition()
+  currentValue = input.val()
+  beforeCurrent = currentValue.substring(0, currentIndex)
+
+  previousWhitespaceIndex = beforeCurrent.lastIndexOf(" ")
+  previousWhitespaceIndex = 0 if previousWhitespaceIndex == -1
+  valueWithWordRemoved = currentValue.slice(0, previousWhitespaceIndex) + currentValue.slice(currentIndex)
+  input.val(valueWithWordRemoved)
+  input.setCursorPosition(previousWhitespaceIndex)
