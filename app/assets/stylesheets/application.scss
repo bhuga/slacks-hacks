@@ -61,6 +61,24 @@ ts-message {
   max-width: inherit;
 }
 
+.msg_inline_img_holder .msg_inline_img_container:hover::after {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  right:15px;
+  top: 15px;
+  background-color: #fff;
+  font-family: Slack;
+  font-size: 30px;
+  line-height: 33px;
+  font-style: normal;
+  font-weight: 400;
+  content: "\E278";
+  opacity: 0.5;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .msg_inline_file_preview_toggler, .inline_img_bytes, .msg_inline_img_collapser {
   display: none;
 }
