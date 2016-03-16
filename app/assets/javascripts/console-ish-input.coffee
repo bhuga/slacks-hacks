@@ -3,6 +3,7 @@ input = TS.client.ui.$msg_input
 # by default slack won't go to previous commands with 'up', just to the front
 # of the line. Fix that if there's no newlines in the message.
 input.bind "keydown", (e) ->
+  return if e.altKey || e.ctrlKey
   return if input.val().indexOf("\n") != -1
 
   if (e.which == TS.utility.keymap.up && input.getCursorPosition() >= 1 && !e.movedHistory)
