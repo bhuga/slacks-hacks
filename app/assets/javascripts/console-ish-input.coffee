@@ -5,6 +5,8 @@ input = TS.client.ui.$msg_input
 input.bind "keydown", (e) ->
   return if e.altKey || e.ctrlKey
   return if input.val().indexOf("\n") != -1
+  # alt/option + up/down are for moving between channels
+  return if e.getModifierState("Alt")
 
   if (e.which == TS.utility.keymap.up && input.getCursorPosition() >= 1 && !e.movedHistory)
     TS.chat_history.onArrowKey(e, input)
