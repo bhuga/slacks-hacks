@@ -159,7 +159,8 @@ ts-message.sent_by_me {
 .inserted_button {
   border-radius: 5px;
   background: #fbfbfa;
-  line-height: 16px;
+  line-height: 11px;
+  height: 22px;
   font-size: 14px;
   font-family: Slack-Lato,appleLogo,sans-serif;
   font-weight: 700;
@@ -169,6 +170,19 @@ ts-message.sent_by_me {
   &:hover {
     background: #fff;
     color: #3aa3e3;
+  }
+
+  &.icon {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .red {
+    color: #E4061B;
+    &:hover::before {
+      color: #F95400;
+      font-weight: bold;
+    }
   }
 }
 
