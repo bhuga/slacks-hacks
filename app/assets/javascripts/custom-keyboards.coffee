@@ -26,4 +26,33 @@ window.repaintKeyboards = ->
       fillMessageBar(command)
     $(el).replaceWith(button)
 
+  images = $('a').filter ->
+    @href.indexOf("https://a.img.button") == 0
+
+  images.each (_, el) ->
+    fields = el.href.split("/", 5)
+    image_url = decodeURIComponent(fields[3])
+    command = decodeURIComponent(fields[4])
+    button = $("<button class='inserted_button image'><img src=\"#{image_url}\"></button>")
+    button.click ->
+      fillMessageBar(command)
+    $(el).replaceWith(button)
+
+  selects = $('a').filter ->
+    @href.indexOf("https://a.select") == 0
+
+  selects.each (_, el) ->
+    fields = el.href.split("/").slice(3)
+    options = fields.map (field, i) ->
+      field = decodeURIComponent(field)
+      [title, command] = field.split(":")
+      selected = if i == 0 then "selected" else ""
+      "<option value=\"#{command}\" #{selected}>#{title}</option>"
+    select = $("<select class='inserted_select'>#{options}</select>")
+    select.change ->
+      fillMessageBar(select.val())
+    $(el).replaceWith(select)
+
+
+
 slackReadyFunction(window.repaintKeyboards)

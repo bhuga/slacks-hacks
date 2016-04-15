@@ -184,6 +184,37 @@ ts-message.sent_by_me {
       font-weight: bold;
     }
   }
+  .green {
+    color: #09D209;
+    &:hover::before {
+      color: #09D209;
+      font-weight: bold;
+    }
+  }
+
+  &.image {
+    border-radius: 15px;
+    height: inherit;
+    margin: 4px;
+    padding: 0;
+
+    &:hover {
+      border-color: #4078C0;
+      border-width: 5px;
+      margin: 0;
+    }
+
+    img {
+      height: 100px;
+      border-radius:10px;
+    }
+  }
+}
+
+.inserted_select {
+  width: inherit;
+  -webkit-appearance: menulist;
+  font-size: inherit;
 }
 
 pre.special_formatting {
