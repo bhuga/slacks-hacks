@@ -241,3 +241,7 @@ pre.special_formatting {
      transform: scale(1.5);
    }
 }
+.file_container.snippet_container.snippet_wrap .CodeMirror .CodeMirror-code>div pre, .file_container.snippet_container.snippet_wrap .sssh-code .sssh-line pre, .message .file_container.snippet_container .CodeMirror .CodeMirror-code>div pre, .message .file_container.snippet_container .sssh-code .sssh-line pre {
+  white-space: pre;
+  word-wrap: normal;
+}
