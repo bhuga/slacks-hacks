@@ -64,6 +64,9 @@ ts-message {
 .msg_inline_img_holder .msg_inline_img_container {
   max-width: inherit;
 }
+.attachment_group {
+  max-width: inherit;
+}
 
 .msg_inline_img_holder .msg_inline_img_container:hover::after {
   height: 30px;
