@@ -26,6 +26,11 @@
   font-size: 14px;
 }
 
+.file_preview_preserve_aspect_ratio {
+  height: inherit !important;
+  width: inherit !important;
+}
+
 /* 'bot_message' is attached to things from incoming webhooks -- usually notifications.
    'bot' is added to that as well and is hubot replies. */
 

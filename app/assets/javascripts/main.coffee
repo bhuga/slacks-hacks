@@ -32,14 +32,9 @@ addMultilineToMessages = ->
     if selection.html().match(/<br>/)
       selection.closest('.content').first().addClass('multiline_attachment')
 
-removeTinyImageGarbage = ->
-  $('.file_preview_preserve_aspect_ratio').each (_, el) ->
-    $(el).css('width','').css('height','')
-
 redraw = ->
   botifyMessages()
   sentByMeMessages()
   addMultilineToMessages()
-  removeTinyImageGarbage()
 
 slackReadyFunction(redraw)
