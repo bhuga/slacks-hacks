@@ -25,7 +25,9 @@
   line-height: 22px;
   font-size: 14px;
 }
-
+.msg_inline_img_holder .msg_inline_img_container {
+  max-width: 100%;
+}
 /* 'bot_message' is attached to things from incoming webhooks -- usually notifications.
    'bot' is added to that as well and is hubot replies. */
 
