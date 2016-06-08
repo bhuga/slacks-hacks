@@ -32,10 +32,7 @@ addMultilineToMessages = ->
     if selection.html().match(/<br>/)
       selection.closest('.content').first().addClass('multiline_attachment')
 
-removeTinyImageGarbage = ->
-  $('.file_preview_preserve_aspect_ratio').each (_, el) ->
-    $(el).css('width','').css('height','')
-
+# replace slack hardcoded width/height with max width width/height
 slackBuildImgDiv = TS.templates.builders.buildInlineImgDiv
 TS.templates.builders.buildInlineImgDiv = (args...) ->
   result = slackBuildImgDiv(args...)
@@ -48,15 +45,24 @@ TS.templates.builders.buildInlineImgDiv = (args...) ->
               else
                 (max_width / width) * height
 
-  result = result.replace(/<div class="file_preview_preserve_aspect_ratio" style="width: \d+px; height: \d+px;">/,
+  result = result.replace(/<div class="file_preview_preserve_aspect_ratio"[^>]*>/,
                           "<div class=\"file_preview_preserve_aspect_ratio\" style=\"width: #{max_width}px; height: #{max_height}px;\">")
   result
 
+# when scrolling to the bottom, force a redraw before we actually scroll, or
+# our nice big images will throw things off.
+slackismtb = TS.client.ui.instaScrollMsgsToBottom
+TS.client.ui.instaScrollMsgsToBottom = (args...) ->
+  TS.client.ui.checkInlineImgsAndIframesMain()
+  TS.client.msg_pane.rebuild_sig.dispatch()
+  slackismtb(args...)
 
 redraw = ->
   botifyMessages()
   sentByMeMessages()
   addMultilineToMessages()
-  removeTinyImageGarbage()
 
 slackReadyFunction(redraw)
+
+#window.$div = TS.client.ui.$msgs_div
+#window.$scroller_div = TS.client.ui.$msgs_scroller_div
