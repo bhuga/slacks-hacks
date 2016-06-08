@@ -102,5 +102,5 @@ TS.client.ui.checkInlineImgsAndIframesMain = (args...) ->
 
 slackReadyFunction(redraw)
 #TS.pri = "888"
-#window.$div = TS.client.ui.$msgs_div
-#window.$scroller_div = TS.client.ui.$msgs_scroller_div
+window.$div = TS.client.ui.$msgs_div
+window.$scroller_div = TS.client.ui.$msgs_scroller_div
