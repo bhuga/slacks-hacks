@@ -36,6 +36,23 @@ removeTinyImageGarbage = ->
   $('.file_preview_preserve_aspect_ratio').each (_, el) ->
     $(el).css('width','').css('height','')
 
+slackBuildImgDiv = TS.templates.builders.buildInlineImgDiv
+TS.templates.builders.buildInlineImgDiv = (args...) ->
+  result = slackBuildImgDiv(args...)
+  width = result.match(/data-width="(\d+)"/)[1]
+  max_width = TS.client.ui.$msgs_div.width() - 156
+
+  height = result.match(/data-height="(\d+)"/)[1]
+  max_height = if max_width >= width
+                height
+              else
+                (max_width / width) * height
+
+  result = result.replace(/<div class="file_preview_preserve_aspect_ratio" style="width: \d+px; height: \d+px;">/,
+                          "<div class=\"file_preview_preserve_aspect_ratio\" style=\"width: #{max_width}px; height: #{max_height}px;\">")
+  result
+
+
 redraw = ->
   botifyMessages()
   sentByMeMessages()
