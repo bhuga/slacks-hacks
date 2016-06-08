@@ -66,6 +66,7 @@ slackismtb = TS.client.ui.instaScrollMsgsToBottom
 TS.client.ui.instaScrollMsgsToBottom = (args...) ->
   #console.log "sh before check inline imgs in instascroll to bottom:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
   TS.client.ui.checkInlineImgsAndIframesMain()
+  TS.client.msg_pane.rebuild_sig.dispatch()
   $div.css("transform", "translateZ(0);")
   #console.log "sh after check inline imgs in instascroll to bottom:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
   slackismtb(args...)
@@ -84,12 +85,8 @@ slackpomsr = TS.client.msg_pane.padOutMsgsScrollerRAF
 TS.client.msg_pane.padOutMsgsScrollerRAF = (args...) ->
   slackpomsr(args...)
   console.log "sh after padoutmsgsscrollerraf (#{TS.shared.getActiveModelOb().name}:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
-
-slackpoms = TS.client.msg_pane.padOutMsgsScroller
-TS.client.msg_pane.padOutMsgsScroller = (args...) ->
-  slackpoms(args...)
-  console.log "sh after padoutmsgsscroller:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
 ###
+
 redraw = ->
   botifyMessages()
   sentByMeMessages()
@@ -98,7 +95,7 @@ redraw = ->
 slackchcki = TS.client.ui.checkInlineImgsAndIframesMain
 TS.client.ui.checkInlineImgsAndIframesMain = (args...) ->
   #console.log "sh before check inline imgs:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
-  TS.client.ui.checkInlineImgsAndIframes("main")
+  slackchcki(args...)
   #console.log "sh after check inline imgs:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
   TS.client.msg_pane.rebuild_sig.dispatch()
   #console.log "sh after check inline imgs:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
