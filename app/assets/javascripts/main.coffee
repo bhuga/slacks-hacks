@@ -37,40 +37,39 @@ TS.templates.builders.buildInlineImgDiv = (args...) ->
   result = slackBuildImgDiv(args...)
   width = result.match(/data-width="(\d+)"/)[1]
   height = result.match(/data-height="(\d+)"/)[1]
-  #result = result.replace(/style="(width|height):\d+px;"/g, "").replace(/style="width:\s*\d+px;\s*height:\s*\d+px;"/g, "style=\"width:#{width}px;height:#{height}px;\"")
   result = result.replace(/style="(width|height):\d+px;"/g, "").replace(/style="width:\s*\d+px;\s*height:\s*\d+px;"/g, '')
   src = result.match(/img data-real-src="([^"]+)"/)[1]
   result = result.replace(/<img/, "<img src=\"#{src}\"  ")
   result = result.replace(/<figure/,"<figure style='max-height:#{height}px;' ")
   result = result.replace(' hidden"', "")
-  console.log result
+  #console.log result
   window.requestAnimationFrame ->
-    console.log "sh in RAF:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
+    #console.log "sh in RAF:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
   result
 
 slackMetricsMeasure = TS.metrics.measure
 TS.metrics.measure = (args...) ->
   if args[0] == "message_render" && args[1] == "start_message_render"
-    console.log "sh after render:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
+    #console.log "sh after render:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
     TS.client.msg_pane.rebuild_sig?.dispatch()
     $scroller_div.scrollTop($scroller_div[0].scrollTop + 1)
     $div.css("transform", "translateZ(0);")
-    console.log "sh after rebuild sig:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
+    #console.log "sh after rebuild sig:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
   slackMetricsMeasure(args...)
-
+###
 slackScrollInview = TS.client.ui.scrollMsgsSoFirstUnreadMsgIsInView
 TS.client.ui.scrollMsgsSoFirstUnreadMsgIsInView = (args...) ->
   console.log "doing this other weird scroll. super weird."
   #slackScrollInview(args...)
-
+###
 slackismtb = TS.client.ui.instaScrollMsgsToBottom
 TS.client.ui.instaScrollMsgsToBottom = (args...) ->
-  console.log "sh before check inline imgs in instascroll to bottom:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
+  #console.log "sh before check inline imgs in instascroll to bottom:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
   TS.client.ui.checkInlineImgsAndIframesMain()
   $div.css("transform", "translateZ(0);")
-  console.log "sh after check inline imgs in instascroll to bottom:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
+  #console.log "sh after check inline imgs in instascroll to bottom:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
   slackismtb(args...)
-
+###
 slackUEM = TS.client.msg_pane.updateEndMarker
 TS.client.msg_pane.updateEndMarker = (args...) ->
   slackUEM(args...)
@@ -90,17 +89,19 @@ slackpoms = TS.client.msg_pane.padOutMsgsScroller
 TS.client.msg_pane.padOutMsgsScroller = (args...) ->
   slackpoms(args...)
   console.log "sh after padoutmsgsscroller:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
-
-slackchcki = TS.client.ui.checkInlineImgsAndIframesMain
-TS.client.ui.checkInlineImgsAndIframesMain = (args...) ->
-  console.log "sh before check inline imgs:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
-  TS.client.ui.checkInlineImgsAndIframes("main")
-  console.log "sh after check inline imgs:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
-
+###
 redraw = ->
   botifyMessages()
   sentByMeMessages()
   addMultilineToMessages()
+
+slackchcki = TS.client.ui.checkInlineImgsAndIframesMain
+TS.client.ui.checkInlineImgsAndIframesMain = (args...) ->
+  #console.log "sh before check inline imgs:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
+  TS.client.ui.checkInlineImgsAndIframes("main")
+  #console.log "sh after check inline imgs:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
+  TS.client.msg_pane.rebuild_sig.dispatch()
+  #console.log "sh after check inline imgs:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
 
 slackReadyFunction(redraw)
 TS.pri = "888"
