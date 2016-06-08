@@ -101,6 +101,6 @@ TS.client.ui.checkInlineImgsAndIframesMain = (args...) ->
   #console.log "sh after check inline imgs:" + $div[0].scrollHeight + " #{$scroller_div[0].scrollHeight}"
 
 slackReadyFunction(redraw)
-TS.pri = "888"
-window.$div = TS.client.ui.$msgs_div
-window.$scroller_div = TS.client.ui.$msgs_scroller_div
+#TS.pri = "888"
+#window.$div = TS.client.ui.$msgs_div
+#window.$scroller_div = TS.client.ui.$msgs_scroller_div
