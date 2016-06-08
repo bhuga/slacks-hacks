@@ -26,11 +26,6 @@
   font-size: 14px;
 }
 
-.file_preview_preserve_aspect_ratio {
-  height: inherit !important;
-  width: inherit !important;
-}
-
 /* 'bot_message' is attached to things from incoming webhooks -- usually notifications.
    'bot' is added to that as well and is hubot replies. */
 
@@ -66,6 +61,9 @@ ts-message {
   padding-bottom: 0px;
 }
 
+.msg_inline_img_holder .msg_inline_img_container {
+  max-width: inherit;
+}
 .attachment_group {
   max-width: inherit;
   margin: 0;
@@ -98,7 +96,7 @@ ts-message {
 }
 
 /* Allow long bot message to scroll */
-.bot_label ~ .message_body .multiline_attachment {
+.bot_label ~ .message_body .content.multiline_attachment {
   font-family: menlo;
   font-size: 12px;
   white-space: nowrap;

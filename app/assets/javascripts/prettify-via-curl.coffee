@@ -5,6 +5,7 @@ window.prettifyJsCommand = ->
   jsUrls = _.filter (urls), (url) ->
     (url.indexOf("slack-edge")!= -1) && (url.lastIndexOf("js") == url.length - 2)
 
+  console.log jsUrls
   commands = jsUrls.map (url) ->
     fields = url.split("/")
     basename = fields[fields.length - 1]
@@ -15,6 +16,7 @@ window.prettifyJsCommand = ->
   $('body').append(input)
   input.get(0).select()
   document.execCommand("copy")
+  window.input = input
   input.remove()
 
   console.log "Paste your clipboard into the shell"
