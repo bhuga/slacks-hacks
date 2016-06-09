@@ -45,6 +45,12 @@ TS.templates.builders.buildInlineImgDiv = (args...) ->
               else
                 (max_width / width) * height
 
+  if max_height > 300
+    old_max_height = max_height
+    max_height = 300
+    max_width = (height / old_max_height) * max_width
+
+  #console.log "width: #{width} mw: #{max_width} height: #{height} mh: #{max_height}"
   result = result.replace(/<div class="file_preview_preserve_aspect_ratio"[^>]*>/,
                           "<div class=\"file_preview_preserve_aspect_ratio\" style=\"width: #{max_width}px; height: #{max_height}px;\">")
   result
