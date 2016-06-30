@@ -27,7 +27,7 @@ sentByMeMessages = ->
     $(el).addClass 'sent_by_me'
 
 addMultilineToMessages = ->
-  $('.attachment_contents').each (_, el) ->
+  $('.attachment_flush_text').each (_, el) ->
     selection = $(el)
     if selection.html().match(/<br>/)
       selection.closest('.content').first().addClass('multiline_attachment')
