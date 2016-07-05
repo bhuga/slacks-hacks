@@ -27,9 +27,9 @@ previousTotal = 0
 setInterval ->
   total = 0
 
-  $("#channel-list .unread_highlight").each (_, el) ->
+  $("#channel-list .unread_highlights").each (_, el) ->
     total += parseInt($(el).text())
-  $("#im-list .unread_highlight").each (_, el) ->
+  $("#im-list .unread_highlights").each (_, el) ->
     total += parseInt($(el).text())
 
   # This can cause weird re-bounces in situations like reading messages in
