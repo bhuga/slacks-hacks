@@ -35,6 +35,8 @@ addMultilineToMessages = ->
 # replace slack hardcoded width/height with max width width/height
 slackBuildImgDiv = TS.templates.builders.buildInlineImgDiv
 TS.templates.builders.buildInlineImgDiv = (args...) ->
+  maxImageHeight = 600
+
   result = slackBuildImgDiv(args...)
   width = result.match(/data-width="(\d+)"/)[1]
   max_width = TS.client.ui.$msgs_div.width() - 156
@@ -45,9 +47,9 @@ TS.templates.builders.buildInlineImgDiv = (args...) ->
               else
                 (max_width / width) * height
 
-  if max_height > 300
+  if max_height > maxImageHeight
     old_max_height = max_height
-    max_height = 300
+    max_height = maxImageHeight
     max_width = (height / old_max_height) * max_width
 
   #console.log "width: #{width} mw: #{max_width} height: #{height} mh: #{max_height}"
