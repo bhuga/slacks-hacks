@@ -35,6 +35,7 @@ addMultilineToMessages = ->
 # replace slack hardcoded width/height with max width width/height
 slackBuildImgDiv = TS.templates.builders.buildInlineImgDiv
 TS.templates.builders.buildInlineImgDiv = (args...) ->
+  # should match css rule for .attachment_group .msg_inline_img_holder .msg_inline_img img
   maxImageHeight = 600
 
   result = slackBuildImgDiv(args...)

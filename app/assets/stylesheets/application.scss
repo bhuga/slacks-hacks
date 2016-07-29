@@ -25,6 +25,11 @@
   line-height: 22px;
   font-size: 14px;
 }
+
+.attachment_group .msg_inline_img_holder .msg_inline_img img {
+  max-height: 600px;
+}
+
 .msg_inline_img_holder .msg_inline_img_container {
   max-width: 100%;
 }
